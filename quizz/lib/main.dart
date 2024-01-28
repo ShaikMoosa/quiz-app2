@@ -46,7 +46,6 @@ class _QuizPageState extends State<QuizPage> {
   // ];
   // List<bool> answers = [false, true, true];
   // Question q1 = Question (q: 'You can lead a cow down stairs but not up stairs.', a: false);
-  int questionNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +59,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questionBank[questionNumber].questionText,
+                quizBrain.getQuestionText(questionNumber),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,
@@ -73,8 +72,7 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           child: ElevatedButton(
             onPressed: () {
-              bool correctAnswer =
-                  quizBrain.questionBank[questionNumber].questionAnswer;
+              bool correctAnswer = quizBrain.getCorrectAnswer(questionNumber);
               if (correctAnswer == true) {
                 print('user got it right');
               } else {
@@ -87,7 +85,8 @@ class _QuizPageState extends State<QuizPage> {
                   //       color: Color.fromARGB(255, 0, 181, 39)),
                   // );
 
-                  questionNumber++;
+                  //questionNumber++;
+                  quizBrain.nextQuestion();
                 },
               );
             },
@@ -103,8 +102,7 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           child: ElevatedButton(
             onPressed: () {
-              bool correctAnswer =
-                  quizBrain.questionBank[questionNumber].questionAnswer;
+              bool correctAnswer = quizBrain.getCorrectAnswer(questionNumber);
               if (correctAnswer == true) {
                 print('user got it right');
               } else {
@@ -117,7 +115,8 @@ class _QuizPageState extends State<QuizPage> {
                   //       color: Color.fromARGB(255, 0, 181, 39)),
                   // );
 
-                  questionNumber++;
+                  //questionNumber++;
+                  quizBrain.nextQuestion();
                 },
               );
             },
